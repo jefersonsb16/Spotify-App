@@ -1,0 +1,23 @@
+<div class="container" style="margin-top: 30px;">
+  <div class="row">
+    <div class="col-md-3">
+      <label for="termino">Buscar Artistas</label>
+      <input type="text" placeholder="Busque artista..."
+      class="form-control" [(ngModel)]="termino"
+      (keyup)="buscarArtista()">
+    </div>
+    <div class="col-md-9"  *ngIf="termino.length > 1">
+      <h1 class="text-capitalize">{{ termino }}</h1>
+      <hr>
+
+      <div class="row">
+        <div class="col-md-3 text-center puntero" *ngFor="let artista of spotyService.artistas"
+              [routerLink]="['/artist', artista.id ]">
+          <img [src]="artista.images | sinfoto" class="img-thumbnail">
+          <p>{{ artista.name }}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
